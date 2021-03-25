@@ -1,5 +1,5 @@
 module.exports = {
-    //Function for setting the server to listen on port 3000.
+    //Function for setting the server to listen on port 8000.
     listen: function(app, PORT) {
         app.listen(PORT, () => {
             let d = new Date();

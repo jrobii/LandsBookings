@@ -19,7 +19,7 @@ MongoClient.connect(mongoUrl, {poolSize:10, useNewUrlParser: true, useUnifiedTop
         console.log("Connected to Database!");
         const db = client.db('landsbookings');
         //USER ROUTES
-        //require('./routes/authroute.js')(app, db);
+        require('./routes/newBooking.js')(app, db);
         //require('./routes/newuserroute.js')(app, db);
         //require('./routes/deleteuserroute.js')(app, db, ObjectID);
         //require('./routes/getusersroute.js')(app, db);
