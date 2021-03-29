@@ -4,22 +4,14 @@ var cors = require('cors');
 const http = require('http').Server(app);
 const server = require('./listen.js');
 const bodyParser = require('body-parser');
-const MongoClient = require('mongodb').MongoClient;
-const ObjectID = require('mongodb').ObjectID;
 
 const PORT=process.env.PORT
-const mongoUrl = 'mongodb://localhost:27017';
 
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-MongoClient.connect(mongoUrl, {poolSize:10, useNewUrlParser: true, useUnifiedTopology: true})
-    .then(client => {
-        console.log("Connected to Database!");
-        const db = client.db('landsbookings');
-        //USER ROUTES
-        require('./routes/newBooking.js')(app, db);
+require('./routes/newBooking.js')(app);
         //require('./routes/newuserroute.js')(app, db);
         //require('./routes/deleteuserroute.js')(app, db, ObjectID);
         //require('./routes/getusersroute.js')(app, db);
@@ -49,6 +41,4 @@ MongoClient.connect(mongoUrl, {poolSize:10, useNewUrlParser: true, useUnifiedTop
     //IMAGE ROUTES
         //require('./routes/imguploadroute.js')(app, formidable);
 
-    server.listen(http, PORT);
-    })
-    .catch(error => console.error(error))
+server.listen(http, PORT);
