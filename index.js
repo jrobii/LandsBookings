@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
 const ObjectID = require('mongodb').ObjectID;
 
-const PORT=8000;
+const PORT=process.env.PORT
 const mongoUrl = 'mongodb://localhost:27017';
 
 app.use(cors());

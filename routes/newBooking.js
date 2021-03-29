@@ -1,13 +1,13 @@
 module.exports = function (app, db) {
-    //Route for checking user credentials
+    //Route for adding a new booking.
     app.post('/api/booking', function(req, res){
         if (!req.body) {
             res.sendStatus(400);
         }
-        //Grab the username and password from the request.
+        //Grab the body from the request.
         booking = req.body;
         console.log(booking)
-        //Try to find if there is a user that has that username and password.
+        //Insert the booking information into a new record in the bookings collection.
         const collection = db.collection('bookings');
         collection.insertOne(booking, (err, dbres) => {
             if (err) throw err;
