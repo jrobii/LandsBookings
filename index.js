@@ -11,7 +11,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-require('./routes/newBooking.js')(app);
-require('./routes/viewBookings.js')(app);
+// Routes
+app.use('/api', require('./routes/bookingRouter'))
 
 server.listen(http, PORT);
