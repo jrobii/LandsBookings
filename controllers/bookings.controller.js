@@ -36,7 +36,12 @@ module.exports.create = (req, res) => {
 }
 
 module.exports.list= (req, res) => {
-    Bookings.findAll()
+    console.log(req.body.selectedDate)
+    Bookings.findAll({
+        where: {
+            date: req.body.selectedDate
+        }
+    })
     .then(data => {
         res.send(data);
     })
