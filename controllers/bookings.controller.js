@@ -36,7 +36,6 @@ module.exports.create = (req, res) => {
 }
 
 module.exports.list= (req, res) => {
-    console.log(req.body.selectedDate)
     Bookings.findAll({
         where: {
             date: req.body.selectedDate
