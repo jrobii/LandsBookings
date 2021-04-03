@@ -1,5 +1,8 @@
 const db = require('../models');
+const bcrypt = require('bcrypt');
 const User = db.User
+const jwt = require('jsonwebtoken')
+
 
 module.exports.create = (req, res) => {
     console.log(req.body);
@@ -11,11 +14,21 @@ module.exports.create = (req, res) => {
       User.findAll({
           where: {
               userName: req.body.username,
-              password: req.body.password
           }
       })
       .then(data => {
-          res.send(data);
+          bcrypt.compare(req.body.password, data[0].password).then(function(result) {
+              if (result == true) {
+                  const token = jwt.sign({id: data[0].id, user: data[0].username}, process.env.SECRET_STRING, {expiresIn: '1h'});
+                  res.cookie('token', token, {maxAge: 3600000, httpOnly: true});
+                  res.json({status:"success", user: data, token: token});
+                  
+              } else {
+                  return res.status(401).json({
+                      message: "Error, you have provided an incorrect username and/or password!"
+                  })
+              }
+          });
       })
       .catch(err => {
           return res.status(500).json({
