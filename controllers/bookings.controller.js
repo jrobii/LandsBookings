@@ -1,6 +1,7 @@
 const db = require('../models');
 const Bookings = db.Bookings
 const fetch = require('node-fetch');
+const { JsonWebTokenError } = require('jsonwebtoken');
 
 module.exports.create = (req, res) => {
   console.log(req.body);

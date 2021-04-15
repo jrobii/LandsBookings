@@ -9,6 +9,22 @@ module.exports.create = (req, res) => {
       if (!req.body.firstName) return res.sendStatus(400);
    
   }
+
+  module.exports.checkAuth = (req, res) => {
+    const token = req.cookies.token
+    if (token) {
+        jwt.verify(token, process.env.SECRET_STRING, (err, user) => {
+            if (err) {
+                return res.send({authenticated: false});
+            } else {
+                res.send({authenticated: true, user})
+            }
+        });
+    } else {
+        return res.send({authenticated: false});
+    }
+}
+
   
   module.exports.find = (req, res) => {
       User.findAll({
