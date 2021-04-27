@@ -51,3 +51,20 @@ module.exports.list= (req, res) => {
         });
     });
 }
+
+module.exports.remove = (req, res) => {
+    console.log(req.body.id)
+    Bookings.destroy({
+        where: {
+            id: req.body.id
+        }
+    })
+    .then(() => {
+        return res.sendStatus(200);
+    })
+    .catch(err => {
+        return res.status(500).json({
+            message: err.message || "An error occurred whilst trying to delete a booking from the database."
+        });
+    })
+}
