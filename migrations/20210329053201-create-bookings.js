@@ -17,6 +17,9 @@ module.exports = {
       phoneNum: {
         type: Sequelize.STRING
       },
+      location: {
+        type: Sequelize.STRING
+      },
       persons: {
         type: Sequelize.STRING
       },
