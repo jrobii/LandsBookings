@@ -15,3 +15,5 @@ COPY . .
 EXPOSE 8000
 
 CMD node -r dotenv/config index.js
+
+LABEL org.opencontainers.image.source="https://github.com/jrobii/LandsBookings"
