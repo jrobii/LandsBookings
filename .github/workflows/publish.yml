@@ -8,9 +8,16 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    
+    - name: Login to GitHub Container Registry
+      uses: docker/login-action@v1
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Build the landsbooking Docker image
       run: |
-        echo $CR_PAT | docker login ghcr.io -u jrobii --password-stdin
-      env:
-        CR_PAT: ${{ secrets.CR_PAT }}
+        docker build . --tag ghcr.io/jrobii/landsbooking:latest
+        docker run ghcr.io/jrobii/landsbooking:latest
+        docker push ghcr.io/jonashackt/landsbooking:latest
