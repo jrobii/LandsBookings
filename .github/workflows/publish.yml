@@ -19,5 +19,4 @@ jobs:
     - name: Build the landsbooking Docker image
       run: |
         docker build . --tag ghcr.io/jrobii/landsbooking:latest
-        docker run ghcr.io/jrobii/landsbooking:latest
         docker push ghcr.io/jrobii/landsbooking:latest
