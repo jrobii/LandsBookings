@@ -5,7 +5,6 @@ const http = require('http').Server(app);
 const server = require('./listen.js');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-require('dotenv').config();
 
 const PORT=process.env.PORT
 
