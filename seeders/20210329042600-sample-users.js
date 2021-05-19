@@ -6,14 +6,8 @@ module.exports = {
      'Users',
      [
        {
-         userName: "jye",
-         password: "YzAwNjdkNGFmNGU4N2YwMGRiYWM2M2I2MTU2ODI4MjM3MDU5MTcyZDFiYmVhYzY3NDI3MzQ1ZDZhOWZkYTQ4NA==",
-         createdAt: new Date(),
-         updatedAt: new Date(),
-       },
-       {
-        userName: "jo",
-        password: "YzRkMmNlNWUxZDEyMTQ3MzM1ZDIzMjUxNmU4MzIxYTdhMmZmOTlmYjQ5ZGY3ZjJhNTAwYzY0MWUzZTUwMmM4Ng==",
+        userName: "admin",
+        password: "$2b$10$eLxIWHbXnAwg13P1Fmt4jOVZDDgVzav6ankgzXG9bK0H2wMIeC.7K",
         createdAt: new Date(),
         updatedAt: new Date(),
        }
