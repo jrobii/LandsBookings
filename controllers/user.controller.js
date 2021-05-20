@@ -36,7 +36,7 @@ module.exports.create = (req, res) => {
           bcrypt.compare(req.body.password, data[0].password).then(function(result) {
               if (result == true) {
                   const token = jwt.sign({id: data[0].id, user: data[0].username}, process.env.SECRET_STRING, {expiresIn: '1h'});
-                  res.cookie('token', token, {maxAge: 3600000, secure: true, httpOnly: true});
+                  res.cookie('token', token, {maxAge: 3600000, secure: true, httpOnly: true, sameSite: "none"});
                   res.json({status:"success", user: data, token: token});
                   
               } else {
